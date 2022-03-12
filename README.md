@@ -1,0 +1,1 @@
+# AdministracionSOLINUX-G1N
