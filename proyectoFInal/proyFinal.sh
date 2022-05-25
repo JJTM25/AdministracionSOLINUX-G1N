@@ -21,7 +21,7 @@ function main {
 			opciones_firewall;;
 		infoPasswd)
 			info_passwd;;
-		mssge)
+		messag)
 			print_mssg;;
 		disks)
 			listar_Discos;;
@@ -93,11 +93,11 @@ function info_passwd {
 
 function print_mssg {
 	echo "----//-----//----//----//----//----//----INICIO Print Mensaje----//----//-----//-----//----//----//----"
-	echo mesagge
+	echo $2
 	echo "----//-----//----//----//----//----//----TERMINA Print Mensaje---//----//-----//-----//----//----//----"
 }
 
-function listar_discos {
+function listar_Discos {
 	echo "----//-----//----//----//----//--//-INICIO  CONSULTA DISCOS DUROS-//--//-----//-----//----//----//----"
 	lsblk
 	echo "----//-----//----//----//----//--//-TERMINA CONSULTA DISCOS DUROS-//--//-----//-----//----//----//----"
@@ -125,7 +125,7 @@ function help {
 		selinux: Consultar el estado de selinux
 		firewall: Listar las opciones de firewall configuradas
 		infoPasswd: Mostrar la informacion del archivo /etc/passwd
-		msagge: Para imprimir un mensaje
+		mesagg: Para imprimir un mensaje
 		disks: Listar los discos duros y particiones del servidor
 		tim: Saber el tiempo que lleva encendido el servidor
 		process: Conocer los procesos del servidor"
