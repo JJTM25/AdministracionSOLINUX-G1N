@@ -1,6 +1,7 @@
 #!/bin/bash
 
 param=$1
+mesagge=$2
 
 function main {
 	case $param in
@@ -20,6 +21,8 @@ function main {
 			opciones_firewall;;
 		infoPasswd)
 			info_passwd;;
+		mssge)
+			print_mssg;;
 		disks)
 			listar_Discos;;
 		tim)
@@ -64,31 +67,52 @@ function consultar_dns {
 }
 
 function consultar_gateway {
-	echo "Consultar el gateway del servidor"
+	echo "----//-----//----//----//----//----//--INICIO CONSULTA GATEWAY--//----//-----//-----//----//----//----"
+	route -n	
+	echo "----//-----//----//----//----//----//-TERMINA CONSULTA GATEWAY-//----//-----//-----//----//----//----"
 }
 
 function consultar_selinux {
-	echo "Consultar el estado de selinux"
+	echo "----//-----//----//----//----//----//--INICIO CONSULTA SELINUX--//----//-----//-----//----//----//----"
+	getenforce
+	echo "----//-----//----//----//----//----//--TERMINA CONSULTA SELINUX--//----//-----//-----//----//----//----"
 }
 
 function opciones_firewall {
-	echo "Listar las opciones de firewall configuradas"
+	echo "----//-----//----//----//----//----//--INICIO CONSULTA FIREWALL--//----//-----//-----//----//----//----"
+	sudo yum install firewalld
+	firewall-cmd --list-all
+	echo "----//-----//----//----//----//---//--TERMINA CONSULTA FIREWALL--//---//-----//-----//----//----//----"
 }
 
 function info_passwd {
-	echo "Mostrar la informacion del archivo /etc/passwd"
+	echo "----//-----//----//----//----//----//----INICIO INFO PASSWD----//----//-----//-----//----//----//----"
+	cat /etc/passwd
+	echo "----//-----//----//----//----//----//----TERMINA INFO PASSWD---//----//-----//-----//----//----//----"
+}
+
+function print_mssg {
+	echo "----//-----//----//----//----//----//----INICIO Print Mensaje----//----//-----//-----//----//----//----"
+	echo mesagge
+	echo "----//-----//----//----//----//----//----TERMINA Print Mensaje---//----//-----//-----//----//----//----"
 }
 
 function listar_discos {
-	echo "Listar los discos duros del servidor"
+	echo "----//-----//----//----//----//--//-INICIO  CONSULTA DISCOS DUROS-//--//-----//-----//----//----//----"
+	lsblk
+	echo "----//-----//----//----//----//--//-TERMINA CONSULTA DISCOS DUROS-//--//-----//-----//----//----//----"
 }
 
 function tim {
-	echo "Saber el tiempo que lleva prendido el servidor"
+	echo "----//-----//----//----//----//---INICIO CONSULTA TIEMPO DEL SISTEMA---//-----//-----//----//----//----"
+	uptime
+	echo "----//-----//----//----//----//---TERMINA CONSULTA TIEMPO DEL SISTMA---//-----//-----//----//----//----"
 }
 
 function procesos {
-	echo "Conocer los proncesos del servidor"
+	echo "----//-----//----//----//------INICIO CONOCER LOS PROCESOS DEL SISTEMA-------//-----//----//----//----"
+	top
+	echo "----//-----//----//----//-----TERMINA CONOCER LOS PROCESOS DEL SISTEMA------//-----//----//----//----"
 }
 
 function help {
@@ -101,6 +125,7 @@ function help {
 		selinux: Consultar el estado de selinux
 		firewall: Listar las opciones de firewall configuradas
 		infoPasswd: Mostrar la informacion del archivo /etc/passwd
+		msagge: Para imprimir un mensaje
 		disks: Listar los discos duros y particiones del servidor
 		tim: Saber el tiempo que lleva encendido el servidor
 		process: Conocer los procesos del servidor"
