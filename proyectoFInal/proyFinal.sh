@@ -1,7 +1,7 @@
 #!/bin/bash
 
 param=$1
-mesagge=$2
+mssgg=$2
 
 function main {
 	case $param in
@@ -21,14 +21,16 @@ function main {
 			opciones_firewall;;
 		infoPasswd)
 			info_passwd;;
-		messag)
-			print_mssg;;
+		mensaje)
+			print_mssgg;;
 		disks)
 			listar_Discos;;
 		tim)
 			tim;;
 		process)
 			procesos;;
+		changeHTML)
+			change;;
 		help)
 			help;;
 		*) 
@@ -91,10 +93,10 @@ function info_passwd {
 	echo "----//-----//----//----//----//----//----TERMINA INFO PASSWD---//----//-----//-----//----//----//----"
 }
 
-function print_mssg {
+function print_mssgg {
 	echo "----//-----//----//----//----//----//----INICIO Print Mensaje----//----//-----//-----//----//----//----"
-	echo $2
-	echo "----//-----//----//----//----//----//----TERMINA Print Mensaje---//----//-----//-----//----//----//----"
+	 echo $mssgg
+   	echo "----//-----//----//----//----//----//----TERMINA Print Mensaje---//----//-----//-----//----//----//----"
 }
 
 function listar_Discos {
@@ -107,6 +109,12 @@ function tim {
 	echo "----//-----//----//----//----//---INICIO CONSULTA TIEMPO DEL SISTEMA---//-----//-----//----//----//----"
 	uptime
 	echo "----//-----//----//----//----//---TERMINA CONSULTA TIEMPO DEL SISTMA---//-----//-----//----//----//----"
+}
+
+function change {
+	echo "--//-----//----//----//----//--INICIO DE CAMBIO HTML DEL SERVIDOR---//-----//-----//----//----//----"	
+	echo $mssgg > /usr/share/nginx/html/index.html	
+	echo "--//-----//----//----//----//---TERMINA CAMBIO DE HTML DEL SERVIDOR---//-----//-----//----//----//----"
 }
 
 function procesos {
@@ -128,7 +136,8 @@ function help {
 		mesagg: Para imprimir un mensaje
 		disks: Listar los discos duros y particiones del servidor
 		tim: Saber el tiempo que lleva encendido el servidor
-		process: Conocer los procesos del servidor"
+		process: Conocer los procesos del servidor
+		changeHTML: Cambiar el html del servidor"
 }
 
 main
